@@ -1,27 +1,33 @@
 
+def input_s(msg):
+
+    res = input(msg)
+    if res in [" ",".",",",":",";"]:
+        res = input("No se aceptan valores no alfanumericos, intente denuevo\n" + msg)
+    return res
+
 class cuenta:
     usuarios = []   # Almacenamiento de los datos de usuarios
 
     def __init__(self, ci, nombre, saldo) -> None:
+        # Se crea el objeto con los atributos nombre, cedula y su saldo inicial
 
         self.ci = ci
         self.nombre = nombre
         self.saldo = saldo
         cuenta.usuarios.append(self)
 
-        # Se crea el objeto con los atributos nombre, cedula y su saldo inicial
 
         print("Se creo la cuenta satisfactoriamente\n")
 
-
     def restar_saldo(self, num):
+    # Metodo que recibe un objeto cuenta y resta su saldo - numero enviado
         if self.saldo - num < 0:
             print("Saldo insuficiente")
             return False
 
         self.saldo -= num
         return True
-    # Metodo que recibe un objeto cuenta y resta su saldo - numero enviado
     @classmethod
     def existe_cuenta(cls, cedula):
         for i in cls.usuarios:
@@ -45,7 +51,7 @@ class cuenta:
     # de lo contrario retorna True
 def crear_cuenta():
     cedula = int(input("Ingrese la cedula: "))
-    nombre = input("Ingrese nombre de usuario: ")
+    nombre = input_s("Ingrese nombre de usuario: ")
     saldo = int(input("Ingrese monto inicial: "))
 
     cuenta(cedula, nombre, saldo)
