@@ -1,10 +1,4 @@
-#
-# def ver_string(msg):
-#     res = input(msg)
-#     while res in []:
-#         pass
-#
-#     return res
+
 class cuenta:
     usuarios = []   # Almacenamiento de los datos de usuarios
 
