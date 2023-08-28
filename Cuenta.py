@@ -11,7 +11,6 @@ class cuenta:
 
     def __init__(self, ci, nombre, saldo) -> None:
         # Se crea el objeto con los atributos nombre, cedula y su saldo inicial
-
         self.ci = ci
         self.nombre = nombre
         self.saldo = saldo
@@ -29,27 +28,29 @@ class cuenta:
         self.saldo -= num
         return True
     @classmethod
+    # Metodo que verifica si la cedula enviada corresponde a una cuenta existente
     def existe_cuenta(cls, cedula):
         for i in cls.usuarios:
             if cedula == i.ci: return True
         print("La cedula no coincide con la base de datos, intente de nuevo\n")
         return False
-    # Metodo que verifica si la cedula enviada corresponde a una cuenta existente
     @classmethod
+    # Ciclo que recorre la lista de usuarios con un contador, cuando coincida
+    # una cedula con la lista devuelve es objeto usuario
     def conseguir_cuenta(cls, cedula):
         for usuario, i in zip(cls.usuarios, range(len(cls.usuarios))):
             if cedula == usuario.ci: return cls.usuarios[i]
-    # Ciclo que recorre la lista de usuarios con un contador, cuando coincida
-    # una cedula con la lista devuelve es objeto usuario
     @classmethod
     def verificar_usuarios(cls, num):
+    # Recibe un numero y lo compara con la lista de usuarios, si el numero es mayor retorna False
+    # de lo contrario retorna True
         if len(cls.usuarios) < num:
             print("No existen suficientes usarios para realizar esta operacion, regresando\n")
             return True
         return False
-    # Recibe un numero y lo compara con la lista de usuarios, si el numero es mayor retorna False
-    # de lo contrario retorna True
+
 def crear_cuenta():
+    #Se crea objeto clase cuenta
     cedula = int(input("Ingrese la cedula: "))
     nombre = input_s("Ingrese nombre de usuario: ")
     saldo = int(input("Ingrese monto inicial: "))
@@ -57,6 +58,7 @@ def crear_cuenta():
     cuenta(cedula, nombre, saldo)
 
 def consulta():
+    #Te devuelve el saldo actual del objeto
     if cuenta.verificar_usuarios(1): return
 
     cedula = int(input("Ingrese la cedula: "))
@@ -70,7 +72,6 @@ def consulta():
 
 
 def retiro():
-    """retiro:"""
     if cuenta.verificar_usuarios(1): return
 
     cedula = int(input("Ingrese la cedula: "))
