@@ -1,0 +1,2 @@
+def bruh():
+    print("BRUUH")

@@ -1,3 +1,4 @@
+import Modulo as mo
 
 def input_s(msg):
 
@@ -118,6 +119,7 @@ def transferencia():
 
 
 def main():
+    mo.bruh()
     while True:
         print("Banesco Online\n\n(1) Crear usuario\n(2) Consulta\n(3) Deposito\n(4) Retiro\n(5) Transferencia\n(6) Finalizar\n")
 
