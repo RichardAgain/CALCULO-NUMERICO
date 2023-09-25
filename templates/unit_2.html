@@ -1,18 +1,42 @@
 {% extends "layout.html"%}
 
+{% block title %} Unidad 2{% endblock %}
+
+{% block mod %} INTERPOLACION DE LAGRANGE {% endblock %}
+
 {% block body %}
 
-<form method="post">
-    <table style="display: block;">
-        {% for i in range(size) %}
+<div style="text-align: center;">
+    <form method="post">
+        <label for="numero">TAMAÑO DE LOS VECOTRES: </label>
+        <input type="number" name="size" min="1" max="20">
+        <p><input type="submit"></p>
+    </form>
+    </div>
+
+{% if size > 0 %}
+
+<div>
+    <table style="margin: 0 auto;">
+        {% for vector in vectores %}
         <tr>
-            {% for k in range(size) %}
-            <th><input type="number" name="{{i}}{{k}}" required></th>
+            <th>VECTOR {{loop.index}}: </th>
+            {% for i in vector %}
+            <th>{{i}} </th>
             {% endfor %}
         </tr>
         {% endfor %}
     </table>
-    <input type="submit">
-</form>
+    </div>
+
+<div>
+    <p>POLINOMIO SIMPLE: <b> {{res}} </b></p>
+</div>
+
+<div>
+    <img src="static/flot.jpg" alt="resultado">
+</div>
+
+{% endif %}
 
 {% endblock%}

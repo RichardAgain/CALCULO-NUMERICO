@@ -38,28 +38,31 @@ def grafica(xi,fi,pxi,pfi):
     plt.xlabel("xi")
     plt.ylabel("yi")
     plt.title("Interpolacion de Lagrange")
-    plt.show()
+    plt.savefig('static/flot.jpg', bbox_inches='tight')
 
-#Asignaciones:
+def main(x,f):
+    #Asignaciones:
 
-xi = np.array([0,3,5,7,8,10,14])
-fi = np.array([3.67,8.33,21.97,19.33,15.10,14.31,13.74])
+    xi = np.array(x)
+    fi = np.array(f)
 
-pxi,pfi,pol,pol_Simple=valores(xi,fi)
+    pxi,pfi,pol,pol_Simple=valores(xi,fi)
+    grafica(xi,fi,pxi,pfi)
 
-#Impresiones:
+    return pol_Simple
 
-print("")
-print("POLINOMIO EN X")
-print(pxi)
-print("")
-print("POLINOMIO EN Y")
-print(pfi)
-print("")
-print("POLINOMIO BASE")
-print(pol)
-print("")
-print("POLINOMIO SIMPLIFICADO")
-print(pol_Simple)
-print("")
-grafica(xi,fi,pxi,pfi)
+    #Impresiones:
+
+    # print("")
+    # print("POLINOMIO EN X")
+    # print(pxi)
+    # print("")
+    # print("POLINOMIO EN Y")
+    # print(pfi)
+    # print("")
+    # print("POLINOMIO BASE")
+    # print(pol)
+    # print("")
+    # print("POLINOMIO SIMPLIFICADO")
+    # print(pol_Simple)
+    # print("")
