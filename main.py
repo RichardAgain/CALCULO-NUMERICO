@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, request
 from random import randint as rand
 import potenciacion as po
 import Interpolacion as intp
+import random
 
 app = Flask(__name__)
 
@@ -32,26 +33,29 @@ def unit_1():
     else:
         return render_template("unit_1.html", size = 0)
     
-@app.route('/unit_2', methods=['POST','GET'])
-def unit_2():
+@app.route('/unit_3', methods=['POST','GET'])
+def unit_3():
     if request.method == "POST":
         size = request.form["size"]
         if size == "":
-            return render_template("unit_2.html", size = 0)
+            return render_template("unit_3.html", size = 0)
         else:
             size = int(size)
 
         vector_1 = []
         vector_2 = []
         for i in range(size):
-            vector_1.append(rand(1,20))
-            vector_2.append(rand(1,20))
+            vector_1.append(round(random.uniform(0, 7), 2))
+            vector_2.append(round(random.uniform(0, 7), 2))
         
-        res = intp.main(vector_1, vector_2)
+        try: 
+            res = intp.main(vector_1, vector_2)
+        except Exception as err:
+            return render_template('error.html', url = 'unit_3', e = err)
     
-        return render_template("unit_2.html", size = int(size), vectores = [vector_1, vector_2], res = res)
+        return render_template("unit_3.html", size = int(size), vectores = [vector_1, vector_2], res = res)
     else:
-        return render_template("unit_2.html", size = 0)
+        return render_template("unit_3.html", size = 0)
 
 
 

@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 def metodo_potencias(A, num_simulations: int):
     n, d = A.shape
