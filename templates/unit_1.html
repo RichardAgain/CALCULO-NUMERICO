@@ -1,0 +1,36 @@
+{% extends "layout.html"%}
+
+{% block title %} Unidad 1{% endblock %}
+
+{% block mod %} MÉTODO DE LAS POTENCIAS {% endblock %}
+
+{% block body %}
+<div style="text-align: center;">
+<form method="post">
+    <label for="numero">TAMAÑO DE LA MATRIZ: </label>
+    <input type="number" name="size" min="1" max="20">
+    <input type="submit">
+</form>
+</div>
+
+{% if size > 0 %}
+
+<div>
+<table style="margin: 0 auto;">
+    {% for vector in matriz %}
+    <tr>
+        {% for i in vector %}
+        <th>{{i}}</th>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+<div>
+<p> El valor propio dominante es: <b>{{ valor }}</b> </p>
+<p> El vector propio dominante es: <b>{{ vector }}</b> </p>
+</div>
+{% endif %}
+
+{% endblock %}

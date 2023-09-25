@@ -1,0 +1,18 @@
+{% extends "layout.html"%}
+
+{% block body %}
+
+<form method="post">
+    <table style="display: block;">
+        {% for i in range(size) %}
+        <tr>
+            {% for k in range(size) %}
+            <th><input type="number" name="{{i}}{{k}}" required></th>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <input type="submit">
+</form>
+
+{% endblock%}
