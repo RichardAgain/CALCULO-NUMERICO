@@ -22,20 +22,21 @@
         <tr>
             <th>VECTOR {{loop.index}}: </th>
             {% for i in vector %}
-            <th>{{i}}</th>
+            <th>[{{i}}]</th>
             {% endfor %}
         </tr>
         <br>
         {% endfor %}
     </table>
-    </div>
+</div>
 
 <div>
-    <p>POLINOMIO SIMPLE: <b> {{res}} </b></p>
+    <p style="text-align: center;"><b>POLINOMIO SIMPLE: </b></p>{{res}}</p>
 </div>
 
 <div style="margin: 0 auto;">
-    <img src="static/flot.jpg" alt="resultado" height="300" width="500" style="border: 2px solid black;">
+    <img src="static/flot.jpg" alt="resultado" height="300" width="500" style="border: 2px solid black;
+             display: block; margin-left: auto; margin-right: auto;">
 </div>
 
 {% endif %}

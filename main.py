@@ -2,7 +2,9 @@ from flask import Flask, render_template, url_for, request
 from random import randint as rand
 import potenciacion as po
 import Interpolacion as intp
+import sistema as sis
 import random
+
 
 app = Flask(__name__)
 
@@ -33,6 +35,31 @@ def unit_1():
     else:
         return render_template("unit_1.html", size = 0)
     
+@app.route('/unit_2', methods=['POST','GET'])
+def unit_2():
+    if request.method == "POST":
+        filas = request.form['filas']
+        colum = request.form['filas']
+        if filas == "" or colum == '':
+            return render_template("unit_2.html", filas = 0, colum = 0)
+        else:
+            filas = int(filas)
+            colum = int(colum)
+
+        matriz = sis.matriz_random(filas, colum)
+        cons = []
+        for i in range(filas):
+            cons.append(rand(-9,9))
+        
+        res = sis.gauss_jordan(matriz, cons)
+
+        print(cons)
+
+        return render_template('unit_2.html', filas = filas, colum = colum, matriz = matriz, cons = cons, res = res, letras = ['x','y','z','w'], n = range(len(res)))
+
+    else:
+        return render_template('unit_2.html', filas = 0, colum = 0)
+
 @app.route('/unit_3', methods=['POST','GET'])
 def unit_3():
     if request.method == "POST":

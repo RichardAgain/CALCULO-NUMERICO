@@ -1,5 +1,54 @@
 {% extends "layout.html"%}
 
+{% block title %} Unidad 2{% endblock %}
+
+{% block mod %} SISTEMAS DE ECUACIONES {% endblock %}
+
 {% block body %}
+
+<div>
+    <form method="post">
+        <div style="text-align: center;">
+            <form method="post">
+                <p>
+                <label for="filas">TAMAÑO DE LA MATRIZ: </label>
+                <input type="number" name="filas" min="2" max="4">
+                </p>
+                <p><input type="submit"></p>
+            </form>
+            </div>
+    </form>
+</div>
+
+{% if colum > 0 and filas > 0 %}
+<div>
+    <table>
+        {% for k in n %}
+        <tr>
+            <th>
+                {% for i in n %}
+                {% if matriz[k][i] < 0 %}
+                    {{matriz[k][i]}}{{letras[i]}}
+                {% else %}
+                    +{{matriz[k][i]}}{{letras[i]}}
+                {% endif %}
+                {% endfor %}
+                = {{cons[k]}}
+            </th>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div style="text-align: center;">
+    <h3><b>RESULTADOS:</b></h3>
+    {% for i in n %}
+        <p style="font-size: 125%;">{{letras[i]}} = {{res[i]}}</p>
+    {% endfor %}
+</div>
+
+
+
+{% endif %}
 
 {% endblock %}
